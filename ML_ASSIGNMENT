@@ -1,0 +1,26 @@
+
+
+import tensorflow as tf
+a=tf.constant([1.5,2.5,3.5,4.5])
+b=tf.constant([2.2,3.3,4.4,5.5])
+mean_a=tf.reduce_mean(a)
+mean_b=tf.reduce_mean(b)
+ss=tf.Session()
+print (ss.run(mean_a))
+print (ss.run(mean_b))
+#var_x=tf.nn.weighted_moments(x,,mean_x)
+a_a=tf.subtract(a,mean_a)
+b_b=tf.subtract(b,mean_b)
+
+sqr1=tf.square(a_a)
+sqr2=tf.square(b_b)
+
+var1=tf.reduce_sum(sqr1)
+var2=tf.reduce_sum(sqr2)
+
+print (ss.run(var1))
+print (ss.run(var2))
+
+tmp=tf.multiply(a_a,b_b)
+cov=tf.reduce_sum(tmp)
+print (ss.run(cov))

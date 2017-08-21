@@ -1,0 +1,24 @@
+
+#(x−y)2=x2+y2−2xy
+import tensorflow as tf
+x = tf.constant(6, name = "x")
+y = tf.constant(7, name = "y")
+with tf.name_scope("x-y_square"):
+    with tf.name_scope("A2"):
+        x2 = tf.pow(x, 2, name="xSQUARE")
+    with tf.name_scope("B2"):
+        y2 = tf.pow(y, 2, name="ySQUARE")
+    with tf.name_scope("2AB"):
+        with tf.name_scope("AB"):
+            AB = tf.multiply(x,y)
+        A2B = tf.multiply(2,AB)
+    aMINUSb_square = tf.subtract(tf.add(x2,y2),A2B)
+
+with tf.Session() as sess:
+    writer = tf.summary.FileWriter("/home/c2/Desktop", sess.graph)
+    print (A2B)
+    writer.close()
+
+
+
+
